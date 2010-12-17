@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Imprezka</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+  <div id="user_nav" style="left: 5px; right: 5px; top: 50px; width: 100%; height: 40px; background-color:#D7D1EF">  
+    <% if current_user %>  
+      Witaj, <%= current_user.first_name %>!  
+      <%= link_to "Wyloguj", signout_path %>
+      <%= link_to "[Użytkownicy]", users_index_path %>
+      <%= link_to "[Imprezy]", parties_index_path %>
+      <%= link_to "[Dodaj imprezę]", parties_new_path %>
+    <% else %>
+      Kliknij, aby zalogować :   
+      <%= link_to image_tag("facebook-connect.png", :border=>0), "/auth/facebook" %>  
+    <% end %>  
+  </div>  
+
+
+
+<%= yield %>
+
+</body>
+</html>

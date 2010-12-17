@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  name: MyString
+  description: MyText
+  commercial: false
+  for_who: MyString
+  place: MyString
+  when: 2010-12-17 02:59:22
+  photo1: 
+  photo2: 
+
+two:
+  user_id: 1
+  name: MyString
+  description: MyText
+  commercial: false
+  for_who: MyString
+  place: MyString
+  when: 2010-12-17 02:59:22
+  photo1: 
+  photo2: 
