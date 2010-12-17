@@ -8,8 +8,8 @@ class CreateParties < ActiveRecord::Migration
       t.string :for_who
       t.string :place
       t.datetime :when
-      t.binary :photo1, :limit => 262144
-      t.binary :photo2, :limit => 262144
+      t.binary :photo1
+      t.binary :photo2
 
       t.timestamps
     end
