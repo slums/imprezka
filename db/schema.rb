@@ -10,7 +10,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101217151941) do
+ActiveRecord::Schema.define(:version => 20101218200423) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "user_id"
+    t.string   "party_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parties", :force => true do |t|
     t.integer  "user_id"
@@ -39,6 +47,10 @@ ActiveRecord::Schema.define(:version => 20101217151941) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "commercial"
+    t.string   "login"
+    t.string   "pass_hash"
+    t.boolean  "is_active"
+    t.binary   "av_img"
   end
 
 end

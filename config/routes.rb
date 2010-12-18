@@ -1,8 +1,11 @@
 Imprezka::Application.routes.draw do
-  resources :parties
+  resources :parties do
+    resources :comments
+  end
 
   get "users/index"
   get "users/list"
+  get "users/list_clubs"
 #  get "parties/index"
 #  get "parties/list"
 #  get "parties/new"

@@ -6,3 +6,20 @@ Data i godzina : <%= @party.when %><br />
 Dla kogo : <%= @party.for_who %><br />
 Opis : <%= @party.description %><br />
 
+
+<%= form_for([@party, @party.comments.build]) do |f| %>
+
+  <%= f.label :"Komentarz" %>
+  <%= f.text_area :body %>
+  <br />
+  <%= f.submit %>
+
+<% end %>
+
+
+<% @party.comments.each do |comment| %>
+  <% if comment.user %>
+    Autor : <%= comment.user.name %><br />
+    Treść : <%= comment.body %><br /><br />
+  <% end %>
+<% end %>

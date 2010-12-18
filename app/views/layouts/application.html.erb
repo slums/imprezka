@@ -7,34 +7,65 @@
   <%= csrf_meta_tag %>
 
 </head>
-<body>
+<body style="background: url(../images/bg.png); background-repeat:repeat-x; background-color:#d1e5e7">
+	<center>
+	  <div id="user_nav" style="left: 5px; right: 5px; top: 50px; width: 95%; height: 120px; background: url(../images/logo.png); background-repeat:no-repeat; background-color:#76BEEC">  
+	    <%= link_to image_tag("logo_click.png", :border=>0, :align=>"left"), root_path %>
+	    <%= image_tag("top_right.png", :border=>0, :align=>"right") %>
+	    <div align="right" style="line-height:30px">
+	      <% if current_user %>  
+		<span style="font-family: Verdana; font-size: small; color: #FFFFFF">Witaj, <b><%= current_user.first_name %></b> ! <%= link_to image_tag("wyloguj.png", :border=>0, :style=>"vertical-align:middle"), signout_path %></span>
+	      <% else %>
+		&nbsp;
+	      <% end %>
+	    </div>
+	  
+	    <div id="user_nav_links" align="right" style="line-height:125px">
+	      <% if current_user %>  
+		<%= link_to image_tag("kluby.png", :border=>0, :style=>"vertical-align:middle"), users_list_clubs_path %>
+		<%= link_to image_tag("uzytkownicy.png", :border=>0, :style=>"vertical-align:middle"), users_index_path %>
+		<%= link_to image_tag("imprezy.png", :border=>0, :style=>"vertical-align:middle"), parties_path %>
+		<%= link_to image_tag("nowa_impreza.png", :border=>0, :style=>"vertical-align:middle"), new_party_path %>
+	      <% else %>
+		<%= image_tag("logowanie.png", :border=>0, :style=>"vertical-align:middle") %>
+		<%= link_to image_tag("facebook-connect.png", :border=>0, :style=>"vertical-align:middle"), "/auth/facebook" %>  
+	      <% end %>  
+	    </div>
+	  </div>
+	  <div id="belka" style="left: 5px; right: 5px; top: 0px; width: 95%; height: 3px; background-color:#2E5F8B">
+	  </div>
+	  <div id="reklama" style="left: 5px; right: 5px; top: 50px; width: 95%; height: 10px; background-color:#FFFFFF">
+	  </div>
+	  <div id="tresc" style="left: 5px; right: 5px; top: 0px; width: 95%; height: 600px; background-color:#FFFFFF; text-align: center">
+	    <center>
+	      <table width="95%" border="0"><tr>
+	        <td width="82%" bgcolor="FFFFCC" align="left" valign="top">
+	          <!-- tutaj wszystko, co po lewej -->
+	          <%= yield %>
+	        </td>
+	        <td width="18%" align="left" valign="top">
+	          <!-- tutaj wszystko, co po prawej -->
+	          <br />
+	          <% if current_user %>  
+		    <span style="font-family: Verdana; font-size: small; color: #000000">Zalogowany jako <b><%= current_user.first_name %></b>.<br /><br />Brak nowych wiadomości.</span>
+	          <% end %>
+	        </td>
+	      </tr></table>
+	    </center>
 
-  <div id="user_nav" style="left: 5px; right: 5px; top: 50px; width: 100%; height: 120px; background: url(../images/logo.png); background-repeat:no-repeat; background-color:#76BEEC">  
-    <%= image_tag("top_right.png", :border=>0, :align=>"right") %>
-    <div align="right" style="line-height:30px">
-      <% if current_user %>  
-        <span style="font-family: Verdana; font-size: small; color: #FFFFFF">Witaj, <b><%= current_user.first_name %></b> !</span>
-      <% else %>
-        &nbsp;
-      <% end %>
-    </div>
-  
-    <div id="user_nav_links" align="right" style="line-height:135px">
-      <% if current_user %>  
-        <%= link_to image_tag("wyloguj.png", :border=>0, :style=>"vertical-align:middle"), signout_path %>
-        <%= link_to image_tag("uzytkownicy.png", :border=>0, :style=>"vertical-align:middle"), users_index_path %>
-        <%= link_to image_tag("imprezy.png", :border=>0, :style=>"vertical-align:middle"), parties_path %>
-        <%= link_to image_tag("nowa_impreza.png", :border=>0, :style=>"vertical-align:middle"), new_party_path %>
-      <% else %>
-        <%= image_tag("logowanie.png", :border=>0, :style=>"vertical-align:middle") %>
-        <%= link_to image_tag("facebook-connect.png", :border=>0, :style=>"vertical-align:middle"), "/auth/facebook" %>  
-      <% end %>  
-    </div>
-  </div>  
+	  </div>
+	  <div id="belka" style="left: 5px; right: 5px; width: 95%; height: 3px; background-color:#2E5F8B">
+	  </div>
+	  <div id="legal" style="left: 5px; right: 5px; width: 95%; height: 25px; background-color:#a8b8ba">
+	    <%= image_tag("bottom_left.png", :border=>0, :align=>"left", :style=>"vertical-align:middle") %>
+	    <%= image_tag("bottom_right.png", :border=>0, :align=>"right", :style=>"vertical-align:middle") %>
+	    <center><span style="font-family: Verdana; font-size: small; color: #6c7879"> &copy; Copyright 2010 <b>imprezka.wroc.pl</b> </span></center>
+	  </div>
+	  
+	</center>
 
 
 
-<%= yield %>
 
 </body>
 </html>
