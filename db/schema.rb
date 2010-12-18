@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101217015922) do
+ActiveRecord::Schema.define(:version => 20101217151941) do
 
   create_table "parties", :force => true do |t|
     t.integer  "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20101217015922) do
     t.boolean  "verified"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "commercial"
   end
 
 end

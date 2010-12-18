@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
       user.verified = auth["extra"]["user_hash"]["verified"]
       user.fb_link = auth["extra"]["user_hash"]["link"]
       user.email = auth["extra"]["user_hash"]["email"]
+      user.commercial = false
     end  
   end
 

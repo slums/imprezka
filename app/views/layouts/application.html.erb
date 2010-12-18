@@ -5,20 +5,31 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+
 </head>
 <body>
 
-  <div id="user_nav" style="left: 5px; right: 5px; top: 50px; width: 100%; height: 40px; background-color:#D7D1EF">  
-    <% if current_user %>  
-      Witaj, <%= current_user.first_name %>!  
-      <%= link_to "Wyloguj", signout_path %>
-      <%= link_to "[Użytkownicy]", users_index_path %>
-      <%= link_to "[Imprezy]", parties_index_path %>
-      <%= link_to "[Dodaj imprezę]", parties_new_path %>
-    <% else %>
-      Kliknij, aby zalogować :   
-      <%= link_to image_tag("facebook-connect.png", :border=>0), "/auth/facebook" %>  
-    <% end %>  
+  <div id="user_nav" style="left: 5px; right: 5px; top: 50px; width: 100%; height: 120px; background: url(../images/logo.png); background-repeat:no-repeat; background-color:#76BEEC">  
+    <%= image_tag("top_right.png", :border=>0, :align=>"right") %>
+    <div align="right" style="line-height:30px">
+      <% if current_user %>  
+        <span style="font-family: Verdana; font-size: small; color: #FFFFFF">Witaj, <b><%= current_user.first_name %></b> !</span>
+      <% else %>
+        &nbsp;
+      <% end %>
+    </div>
+  
+    <div id="user_nav_links" align="right" style="line-height:135px">
+      <% if current_user %>  
+        <%= link_to image_tag("wyloguj.png", :border=>0, :style=>"vertical-align:middle"), signout_path %>
+        <%= link_to image_tag("uzytkownicy.png", :border=>0, :style=>"vertical-align:middle"), users_index_path %>
+        <%= link_to image_tag("imprezy.png", :border=>0, :style=>"vertical-align:middle"), parties_path %>
+        <%= link_to image_tag("nowa_impreza.png", :border=>0, :style=>"vertical-align:middle"), new_party_path %>
+      <% else %>
+        <%= image_tag("logowanie.png", :border=>0, :style=>"vertical-align:middle") %>
+        <%= link_to image_tag("facebook-connect.png", :border=>0, :style=>"vertical-align:middle"), "/auth/facebook" %>  
+      <% end %>  
+    </div>
   </div>  
 
 

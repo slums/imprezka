@@ -1,15 +1,14 @@
 Imprezka::Application.routes.draw do
+  resources :parties
+
   get "users/index"
-
   get "users/list"
-
-  get "parties/index"
-
-  get "parties/list"
-
-  get "parties/new"
-
+#  get "parties/index"
+#  get "parties/list"
+#  get "parties/new"
   get "home/index"
+#  get "parties/edit"
+#  get "parties/show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

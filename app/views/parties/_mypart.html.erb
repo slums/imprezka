@@ -1,4 +1,4 @@
 <% @parties.each do |party| %>
-  <%= party.name %>
+  <%= link_to "#{party.name}", party %>
   by <%= party.user.name %><br />
 <% end %>

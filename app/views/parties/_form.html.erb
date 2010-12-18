@@ -1,3 +1,24 @@
-<%= form_for(@party) do |form| %>
+<%= form_for(@party) do |f| %>
 
-<%= end %>
+  <%= f.label :"Nazwa" %>
+  <%= f.text_field :name %>
+  <br />
+  <%= f.label :"Miejsce" %>
+  <%= f.text_field :place %>
+  <br />
+  <%= f.label :"Data i godzina" %>
+  <%= f.text_field :when, :value => "2010-12-21 21:00" %>
+  <br />
+  <%= f.radio_button :for_who, "friends", :checked => true %>
+  <%= f.label :"Tylko znajomi" %>
+  <%= f.radio_button :for_who, "invited" %>
+  <%= f.label :"Na zaproszenie" %>
+  <%= f.radio_button :for_who, "all" %>
+  <%= f.label :"Dla wszystkich" %>
+  <br />
+  <%= f.label :"Opis imprezy" %>
+  <%= f.text_area :description %>
+  <br />
+  <%= f.submit %>
+
+<% end %>
