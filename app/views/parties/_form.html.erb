@@ -1,24 +1,32 @@
 <%= form_for(@party) do |f| %>
 
-  <%= f.label :"Nazwa" %>
+  <%= f.label :"Nazwa imprezy :" %>
+  <br />
   <%= f.text_field :name %>
   <br />
-  <%= f.label :"Miejsce" %>
+  <%= f.label :"Miejsce :" %>
+  <br />
   <%= f.text_field :place %>
   <br />
-  <%= f.label :"Data i godzina" %>
+  <%= f.label :"Data i godzina :" %>
+  <br />
   <%= f.text_field :when, :value => "2010-12-21 21:00" %>
   <br />
-  <%= f.radio_button :for_who, "friends", :checked => true %>
-  <%= f.label :"Tylko znajomi" %>
-  <%= f.radio_button :for_who, "invited" %>
-  <%= f.label :"Na zaproszenie" %>
-  <%= f.radio_button :for_who, "all" %>
-  <%= f.label :"Dla wszystkich" %>
+  <%= f.label :"Goście :" %>
   <br />
-  <%= f.label :"Opis imprezy" %>
+  <%= f.radio_button :for_who, "friends", :checked => true %>
+  <%= f.label :"Tylko znajomi", :id => "low" %>
+  <br />
+  <%= f.radio_button :for_who, "invited" %>
+  <%= f.label :"Na zaproszenie", :id => "low" %>
+  <br />
+  <%= f.radio_button :for_who, "all" %>
+  <%= f.label :"Dla wszystkich", :id => "low" %>
+  <br />
+  <%= f.label :"Opis imprezy :" %>
+  <br />
   <%= f.text_area :description %>
   <br />
-  <%= f.submit %>
+  <%= f.submit "Dodaj imprezę" %>
 
 <% end %>

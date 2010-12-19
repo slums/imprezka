@@ -1,4 +1,6 @@
 <% @users.each do |user| %>
-  <%= image_tag("http://graph.facebook.com/#{user.uid}/picture", :border=>0) %>
-  <%= user.name %><br />
+
+  <%= image_tag("http://graph.facebook.com/#{user.uid}/picture", :border=>0, :style=>"vertical-align:middle" ) %>
+  <span id="low2"><%= user.name %><br /></span><br />
+
 <% end %>

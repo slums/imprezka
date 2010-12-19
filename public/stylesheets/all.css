@@ -1,1 +1,75 @@
+input {
+        width: 200px;
+        border: 2px solid #cccccc;
+        padding: 2px;
+        font-family: Tahoma, sans-serif;
+        background-color: #E0EEEF;
+        background-position: bottom right;
+        color: gray;
+	vertical-align:middle;
+}
 
+textarea {
+        width: 300px;
+        height: 80px;
+        border: 2px solid #cccccc;
+        padding: 2px;
+        font-family: Tahoma, sans-serif;
+	font-size: small;
+        background-color: #E0EEEF;
+        background-position: bottom right;
+	color: gray;
+}
+
+label {
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: small;
+	text-decoration: none;
+	text-align: left;
+	vertical-align:middle;
+}
+
+h2 {
+        font-family: Verdana;
+        font-weight: bold;
+        text-decoration: none;
+        text-align: left;
+        vertical-align:middle;
+}
+
+#low {
+        font-family: Verdana;
+        font-weight: normal;
+        font-size: small;
+        text-decoration: none;
+        text-align: left;
+        vertical-align:middle;
+}
+
+#imp {
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: small;
+        text-decoration: none;
+        text-align: left;
+        vertical-align:middle;
+}
+
+#low2 {
+        font-family: Verdana;
+        font-weight: normal;
+        font-size: normal;
+        text-decoration: none;
+        text-align: left;
+        vertical-align:middle;
+}
+
+#imp2 {
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: normal;
+        text-decoration: none;
+        text-align: left;
+        vertical-align:middle;
+}
