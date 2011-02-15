@@ -1,4 +1,4 @@
-<%= form_for(@party) do |f| %>
+<%= form_for @party, :html => { :multipart => true } do |f| %>
 
   <%= f.label :"Nazwa imprezy :" %>
   <br />
@@ -10,16 +10,18 @@
   <br />
   <%= f.label :"Data i godzina :" %>
   <br />
-  <%= f.text_field :when, :value => "2010-12-21 21:00" %>
+  <%= f.text_field :when %>
   <br />
   <%= f.label :"Goście :" %>
   <br />
   <%= f.radio_button :for_who, "friends", :checked => true %>
   <%= f.label :"Tylko znajomi", :id => "low" %>
   <br />
-  <%= f.radio_button :for_who, "invited" %>
-  <%= f.label :"Na zaproszenie", :id => "low" %>
-  <br />
+  <% if false %>
+    <%= f.radio_button :for_who, "invited" %>
+    <%= f.label :"Na zaproszenie", :id => "low" %>
+    <br />
+  <% end %>
   <%= f.radio_button :for_who, "all" %>
   <%= f.label :"Dla wszystkich", :id => "low" %>
   <br />
@@ -27,6 +29,10 @@
   <br />
   <%= f.text_area :description %>
   <br />
+  <%= f.label :"Obrazek :" %>
+  <br />
+  <%= f.file_field :avatar %>
+  <br /><br />
   <%= f.submit "Dodaj imprezę" %>
 
 <% end %>

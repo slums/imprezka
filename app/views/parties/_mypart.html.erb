@@ -1,4 +1,9 @@
 <% @parties.each do |party| %>
+  <% if (party.avatar_file_name) %>
+    <%= image_tag ( party.avatar.url(:thumb), :border=>0, :style => "vertical-align:middle" ) %>
+  <% else %>
+    <%= image_tag("party.png", :border=>0, :style=>"vertical-align:middle") %>
+  <% end %>
   <span id="imp2"><%= link_to "#{party.name}", party %></span>
   <span id="low2">by <%= party.user.name %><br /></span>
 <% end %>

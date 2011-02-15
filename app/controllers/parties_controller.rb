@@ -1,7 +1,10 @@
 class PartiesController < ApplicationController
 
   def index
+    friendlist = client.selection.me.friends.info!['data'].map(&:id)
     @parties = Party.all
+    @parties.reject! { |singleparty| (singleparty.user.id != current_user.id) && (singleparty.for_who != "all") && (!friendlist.include?(singleparty.user.uid)) }
+    @parties.reject! { |singleparty| singleparty.user.is_active == false  }
   end
 
   def list
@@ -9,7 +12,13 @@ class PartiesController < ApplicationController
   end
 
   def show
-    @party = Party.find(params[:id])
+    friendlist = client.selection.me.friends.info!['data'].map(&:id)
+    singleparty = Party.find(params[:id])
+    if (singleparty.user.is_active)
+      if ( (singleparty.user.id == current_user.id) || (singleparty.for_who == "all") || (friendlist.include?(singleparty.user.uid)) )
+        @party = singleparty
+      end
+    end
   end
 
   def new
@@ -17,7 +26,10 @@ class PartiesController < ApplicationController
   end
 
   def edit
-    @party = Party.find(params[:id])
+    singleparty = Party.find(params[:id])
+    if (singleparty.user.id == current_user.id)
+      @party = singleparty
+    end
   end
 
   def create
@@ -33,16 +45,24 @@ class PartiesController < ApplicationController
 
   def update
     @party = Party.find(params[:id])
-    if @party.update_attributes(params[:party])
-      redirect_to @party
-    else
-      render :action => "edit"
+    if (@party.user.id == current_user.id)
+      if @party.update_attributes(params[:party])
+        redirect_to @party
+      else
+        render :action => "edit"
+      end
     end
   end
 
+
   def destroy
-    @party = Party.find(params[:id])
-    @party.destroy
+    if (Party.all.map(&:id).include?(params[:id].to_i))
+      @party = Party.find(params[:id])
+      if (@party.user.id == current_user.id)
+        @party.destroy
+      end
+    end
+    redirect_to(parties_url)
   end
 
 end

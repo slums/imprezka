@@ -1,36 +1,50 @@
-<h2><%= @party.name %></h2>
+<% if @party %>
 
-<span id="imp">Organizator:</span> <span id="low"><%= @party.user.name %><br /></span>
-<span id="imp">Miejsce:</span> <span id="low"><%= @party.place %><br /></span>
-<span id="imp">Data i godzina:</span> <span id="low"><%= @party.when %><br /></span>
-<span id="imp">Dla kogo:</span> <span id="low">
-<% if (@party.for_who == "invited") %>
-  tylko dla zaproszonych
-<% end %>
-<% if (@party.for_who == "all") %>
-  dla wszystkich
-<% end %>
-<% if (@party.for_who == "friends") %>
-  dla znajomych
-<% end %>
-<br /></span>
-<span id="imp">Opis:</span> <span id="low"><%= @party.description %><br /></span>
+    <h2><%= @party.name %></h2>
+    <% if (@party.user.id == current_user.id) %>
+      <span id="low">[<%= link_to "edit", edit_party_path(@party) %>] </span>
+      <span id="low">[<%= link_to "delete", @party, :method => :delete %>]<br /><br /></span>
+    <% end %>
 
-<br />
-<%= form_for([@party, @party.comments.build]) do |f| %>
+    <span id="imp">Organizator:</span> <span id="low"><%= @party.user.name %><br /></span>
+    <span id="imp">Miejsce:</span> <span id="low"><%= @party.place %><br /></span>
+    <span id="imp">Data i godzina:</span> <span id="low"><%= @party.when %><br /></span>
+    <span id="imp">Dla kogo:</span> <span id="low">
+    <% if (@party.for_who == "invited") %>
+      tylko dla zaproszonych
+    <% end %>
+    <% if (@party.for_who == "all") %>
+      dla wszystkich
+    <% end %>
+    <% if (@party.for_who == "friends") %>
+      dla znajomych
+    <% end %>
+    <br /></span>
+    <span id="imp">Opis:</span> <span id="low"><%= @party.description %><br /></span>
 
-  <%= f.label :"Komentarz :" %>
-  <br />
-  <%= f.text_area :body, :style => "height: 50px" %>
-  <br />
-  <%= f.submit "Dodaj komentarz" %>
+    <br />
+    
+    <% if (@party.avatar_file_name) %>
+      <%= image_tag ( @party.avatar.url(:medium), :border=>0, :style => "vertical-align:middle" ) %>
+      <br /><br />
+    <% end %>
+    
+    <%= form_for([@party, @party.comments.build]) do |f| %>
 
-<% end %>
-<br />
+      <%= f.label :"Komentarz :" %>
+      <br />
+      <%= f.text_area :body, :style => "height: 50px" %>
+      <br />
+      <%= f.submit "Dodaj komentarz" %>
 
-<% @party.comments.each do |comment| %>
-  <% if comment.user %>
-    <span id="imp">Autor:</span> <span id="low"><%= comment.user.name %><br /></span>
-    <span id="imp">Treść:</span> <span id="low"><%= comment.body %><br /><br /></span>
-  <% end %>
+    <% end %>
+    <br />
+
+    <% @party.comments.each do |comment| %>
+      <% if comment.user %>
+	<span id="imp">Autor:</span> <span id="low"><%= comment.user.name %><br /></span>
+	<span id="imp">Treść:</span> <span id="low"><%= comment.body %><br /><br /></span>
+      <% end %>
+    <% end %>
+
 <% end %>

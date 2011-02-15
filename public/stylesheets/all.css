@@ -1,3 +1,11 @@
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header{ margin-bottom: 8px; }
+.ui-timepicker-div dl{ text-align: left; }
+.ui-timepicker-div dl dt{ height: 25px; }
+.ui-timepicker-div dl dd{ margin: -25px 0 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+
+
 input {
         width: 200px;
         border: 2px solid #cccccc;
@@ -69,6 +77,24 @@ h2 {
         font-family: Verdana;
         font-weight: bold;
         font-size: normal;
+        text-decoration: none;
+        text-align: left;
+        vertical-align:middle;
+}
+
+#low3 {
+        font-family: Verdana;
+        font-weight: normal;
+        font-size: small;
+        text-decoration: none;
+        text-align: left;
+        vertical-align:middle;
+}
+
+#imp3 {
+        font-family: Verdana;
+        font-weight: bold;
+        font-size: small;
         text-decoration: none;
         text-align: left;
         vertical-align:middle;

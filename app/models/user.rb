@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
-  has_many :parties
-  has_many :comments
+  has_many :parties, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   def self.create_with_omniauth(auth)  
     create! do |user|  
@@ -16,6 +16,17 @@ class User < ActiveRecord::Base
       user.email = auth["extra"]["user_hash"]["email"]
       user.commercial = false
       user.is_active = true
+
+      if (user.first_name == "")
+        user.first_name = "bezimienny"
+      end
+      if (user.last_name == "")
+        user.last_name = "bez nazwiska"
+      end
+      if (user.name == "")
+        user.name = "John Doe"
+      end
+
     end  
   end
 
