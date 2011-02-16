@@ -44,7 +44,7 @@
 	  <div id="tresc" style="left: 5px; right: 5px; top: 0px; width: 95%; height: auto; min-height: 500px; background-color:#FFFFFF; text-align: center">
 	    <center>
 	      <table width="95%" border="0"><tr>
-	        <td width="82%" bgcolor="FFFFCC" align="left" valign="top">
+	        <td width="82%" bgcolor="FFFFFF" align="left" valign="top">
 	          <!-- tutaj wszystko, co po lewej -->
 	          <%= yield %>
 	        </td>
@@ -74,7 +74,7 @@
 
 		    <% if myfriends %>
 		      <% if myfriends.length > 0 %>
-		        <br /><br /><span id="imp3">Twoi znajomi na Imprezce :<br /><br /></span>
+		        <br /><br /><span id="imp3">Twoi znajomi na Imprezce :<br /><br /></span></center>
 		        
 		        <% myfriends.each do |friend| %>
 			  <%= image_tag( "http://graph.facebook.com/#{friend.uid}/picture", :border=>0, :style => "vertical-align:middle" ) %>
@@ -82,7 +82,7 @@
 			<% end %>
 
 		      <% else %>
-		        <br /><br /><span id="imp3">Twoi znajomi nie korzystają z Imprezki.</span>
+		        <center><br /><br /><span id="imp3">Twoi znajomi nie korzystają z Imprezki.</span></center>
 		      <% end %>
 		    <% end %>
 
